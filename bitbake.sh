@@ -16,6 +16,16 @@ cd ~
 source poky/oe-init-build-env build
 
 #
+# edit local.conf
+#
+echo 'IMAGE_INSTALL:append = " \
+  avahi-daemon \
+"' >> conf/local.conf
+
+# set hostname
+echo 'hostname_pn-base-files = "poky-kirkstone"' >> conf/local.conf
+
+#
 # bitbake image
 #
 for i in $(seq ${BITBAKE_RETRY_MAX}) ; do \
